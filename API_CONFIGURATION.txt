@@ -1,0 +1,11 @@
+Laravel API configuration
+=========================
+
+The frontend targets the dedicated local Laravel application at:
+http://127.0.0.1:8000/api
+
+For Windows local development, create a `.env` file beside `package.json` containing:
+
+VITE_API_BASE_URL=http://127.0.0.1:8000/api
+
+`VITE_API_BASE_URL` is optional because the Axios client uses the same local URL as its safe fallback. Set it only when the separate Laravel API is intentionally running at another address. Restart the Vite process after changing the configuration. This value is an endpoint, not a credential; never place passwords, tokens, or private keys in the frontend environment file.

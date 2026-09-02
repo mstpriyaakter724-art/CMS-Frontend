@@ -1,0 +1,50 @@
+/* Reference clinical workspace: Phase 6 uses a warm ledger-gold accent for monetary actions, balanced by neutral tables and explicit payment-state labels. */
+.phase6-page { max-width: 1440px; }
+.btn-billing-primary { border: 1px solid #a96e22; background: #a96e22; color: #fff; border-radius: 3px; padding: .66rem 1rem; font-weight: 750; font-size: .84rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: transform 160ms cubic-bezier(.23,1,.32,1), background-color 160ms cubic-bezier(.23,1,.32,1); }
+.btn-billing-primary:hover { background: #8a5617; color: #fff; }.btn-billing-primary:active { transform: scale(.97); }
+.btn-billing-cancel { border: 1px solid #b74f47; color: #9c3932; background: #fff8f7; border-radius: 3px; padding: .66rem 1rem; font-weight: 750; font-size: .84rem; transition: transform 160ms cubic-bezier(.23,1,.32,1); }.btn-billing-cancel:active { transform: scale(.97); }
+.billing-intro { border-left: 4px solid #a96e22; }.invoice-form .clinical-form-section:first-of-type { border-top-color: #f1dfc2; }
+.phase6-filter-bar { display: grid; grid-template-columns: minmax(210px, 1fr) minmax(130px, .28fr) minmax(150px, .35fr) auto; gap: .75rem; align-items: center; padding: 1rem; }
+.billing-status { display: inline-flex; border-radius: 999px; padding: .25rem .55rem; background: #eef2f3; color: #61777c; text-transform: capitalize; font-size: .71rem; font-weight: 800; white-space: nowrap; }.billing-unpaid { color: #a15b1e; background: #fff1de; }.billing-partially_paid { color: #7b6720; background: #fff9d9; }.billing-paid { color: #17716b; background: #e2f4ef; }.billing-cancelled { color: #9d4a44; background: #fbe8e6; }
+.invoice-line-items { overflow-x: auto; border: 1px solid #e2e9e9; background: #fff; }.invoice-line-heading,.invoice-line-row { min-width: 790px; display: grid; grid-template-columns: 1.5fr 1fr .55fr .8fr .7fr auto; gap: .5rem; align-items: center; padding: .55rem .7rem; }.invoice-line-heading { background: #f5f7f6; color: #728487; font-size: .67rem; letter-spacing: .06em; font-weight: 800; }.invoice-line-row { position: relative; border-top: 1px solid #edf1f0; }.invoice-line-row b { color: #294d4f; font-size: .85rem; text-align: right; }.invoice-remove { border: 0; background: transparent; color: #a15b1e; font-size: .75rem; font-weight: 750; }.invoice-line-error { grid-column: 1/-1; color: #b74f47; }.invoice-add-line { margin-top: .75rem; }
+.invoice-summary { margin-left: auto; width: min(330px, 100%); border-top: 1px solid #dce5e5; padding-top: .5rem; }.invoice-summary div { display: flex; justify-content: space-between; padding: .35rem 0; color: #60767a; }.invoice-summary .is-total { border-top: 1px solid #dce5e5; margin-top: .25rem; padding-top: .65rem; color: #334f50; font-size: 1rem; }.invoice-summary .is-total b { color: #8a5617; font-size: 1.15rem; }
+.billing-hero { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; padding: 1.5rem; border-left: 4px solid #a96e22; }.billing-hero > div > span,.billing-history-summary span { display: block; color: #91764f; font-size: .67rem; letter-spacing: .1em; font-weight: 800; }.billing-hero h2 { color: #4c3c27; margin: .25rem 0 .15rem; font-size: 1.38rem; }.billing-hero p { color: #7f705c; font-size: .85rem; margin: .15rem 0; }.billing-hero strong { display: block; color: #5b492f; margin: .35rem 0; font-size: 1.25rem; }.billing-hero a { color: #8a5617; }.billing-action-panel { margin-top: 1rem; }.billing-history-summary { display: grid; grid-template-columns: auto auto auto 1fr; gap: .6rem 1rem; align-items: center; padding: 1.1rem 1.35rem; }.billing-history-summary strong { color: #8a5617; font-size: 1.15rem; }.billing-cancel-dialog .confirm-panel { display: grid; gap: .75rem; }
+@media (max-width: 760px) { .phase6-filter-bar,.billing-hero { grid-template-columns: 1fr; }.phase6-filter-bar .btn-ledger-secondary { width: 100%; }.billing-history-summary { grid-template-columns: 1fr 1fr; } }
+
+/* Invoice print financial summary: one aligned ledger block, not three oversized dashboard cards. */
+.invoice-financial-summary { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:0; margin:1rem 0 1.05rem; padding:0 !important; overflow:hidden; border:1px solid #d9e3df !important; border-left:3px solid #2f6b5f !important; border-radius:6px !important; background:#fff !important; box-shadow:none !important; }
+.invoice-financial-summary > div { min-width:0; padding:.85rem 1rem .8rem; border-right:1px solid #e4ebe7; }
+.invoice-financial-summary > div:last-child { border-right:0; background:#f7fbf8; }
+.invoice-financial-summary > div > span:first-child { display:block; margin-bottom:.35rem; color:#71827c; font-size:.59rem; font-weight:800; letter-spacing:.1em; }
+.invoice-financial-summary strong { display:block; margin:0; color:#172b2a; font-size:1.18rem; font-weight:780; letter-spacing:-.02em; line-height:1.15; }
+.invoice-financial-summary-total strong { color:#2f6b5f; font-size:1.3rem; }
+.invoice-financial-summary p { min-height:1rem; margin:.38rem 0 0; color:#84928d; font-size:.65rem; line-height:1.25; }
+.invoice-financial-summary .billing-status { padding:.19rem .45rem; font-size:.59rem; }
+@media (max-width:760px) {
+  .invoice-financial-summary { grid-template-columns:1fr; }
+  .invoice-financial-summary > div { border-right:0; border-bottom:1px solid #e4ebe7; }
+  .invoice-financial-summary > div:last-child { border-bottom:0; }
+}
+@media print {
+  .invoice-financial-summary { margin:7mm 0 6mm; border-color:#cfdad5 !important; border-left-color:#2f6b5f !important; }
+  .invoice-financial-summary > div { padding:5mm 5mm 4mm; }
+  .invoice-financial-summary strong { font-size:13pt; }
+  .invoice-financial-summary-total strong { font-size:15pt; }
+  .invoice-financial-summary p { font-size:8pt; }
+  .invoice-financial-summary > div:last-child { background:#f4f9f6 !important; }
+}
+
+/* Dedicated Record Payment page */
+.invoice-payment-page { max-width: 980px; }
+.invoice-payment-context { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; margin:1rem 0; padding:0 !important; overflow:hidden; border-left:3px solid #2f6b5f !important; }
+.invoice-payment-context > div { min-width:0; padding:.85rem 1rem; border-right:1px solid #e4ebe7; }
+.invoice-payment-context > div:last-child { border-right:0; background:#f4faf6; }
+.invoice-payment-context span { display:block; margin-bottom:.3rem; color:#71827c; font-size:.6rem; font-weight:800; letter-spacing:.09em; }
+.invoice-payment-context strong { color:#172b2a; font-size:1.12rem; letter-spacing:-.02em; }
+.invoice-payment-context .is-due strong { color:#2f6b5f; }
+.invoice-payment-page .billing-action-panel { margin-top:0; }
+@media (max-width:760px) {
+  .invoice-payment-context { grid-template-columns:1fr; }
+  .invoice-payment-context > div { border-right:0; border-bottom:1px solid #e4ebe7; }
+  .invoice-payment-context > div:last-child { border-bottom:0; }
+}

@@ -1,0 +1,55 @@
+/* Dashboard and dropdown correction: compact entry spacing plus explicit option visibility. */
+.admin-workspace .routed-page-content { padding-top: 0; }
+.reference-dashboard.phase7-dashboard {
+  padding-top: .42rem !important;
+  padding-bottom: 2rem !important;
+}
+.reference-dashboard .dashboard-reference-heading {
+  margin-top: 0 !important;
+  margin-bottom: .62rem !important;
+}
+.reference-dashboard .dashboard-reference-heading p { margin-top: .16rem !important; }
+
+/* Native controls retain a readable surface; searchable result lists sit above nearby cards. */
+.form-select,
+.clinical-field .form-select,
+.index-controls .form-select,
+.branch-toolbar .form-select {
+  position: relative;
+  z-index: 4;
+  color: #26373a !important;
+  background-color: #fff !important;
+}
+.form-select option {
+  color: #26373a;
+  background: #fff;
+}
+.clinical-field,
+.index-controls,
+.branch-toolbar,
+.reference-surface,
+.clinical-form-shell {
+  overflow: visible;
+}
+.medicine-picker-results {
+  z-index: 120 !important;
+  border-radius: 4px;
+  color: #28393c;
+  background: #fff !important;
+  box-shadow: 0 14px 28px rgba(8, 48, 51, .18) !important;
+}
+.medicine-picker-results button,
+.medicine-picker-results p {
+  color: #2c3e41 !important;
+  background: #fff !important;
+}
+.medicine-picker-results button:hover,
+.medicine-picker-results button:focus-visible {
+  color: #073f42 !important;
+  background: #e9f8f6 !important;
+}
+
+@media (max-width: 620px) {
+  .reference-dashboard.phase7-dashboard { padding-top: .3rem !important; }
+  .reference-dashboard .dashboard-reference-heading { margin-bottom: .48rem !important; }
+}

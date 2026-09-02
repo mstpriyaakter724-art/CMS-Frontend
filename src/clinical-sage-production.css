@@ -1,0 +1,259 @@
+/* Clinical White + Soft Sage + Navy: selected production system. #F7F9F8 canvas, #2F6B5F active/action sage, #172B2A structural navy, white 8–12px work cards. */
+:root { --workbench-canvas:#f7f9f8; --workbench-paper:#ffffff; --workbench-paper-soft:#fbfdfc; --workbench-line:#dce5e0; --workbench-line-soft:#eaf0ed; --workbench-ink:#172b2a; --workbench-copy:#4e625d; --workbench-muted:#71827c; --workbench-primary:#2f6b5f; --workbench-primary-soft:#e6f0eb; --workbench-focus:rgba(47,107,95,.22); --workbench-shadow:0 2px 8px rgba(23,43,42,.045); --workbench-radius:10px; }
+body,.admin-app-shell,.admin-workspace { background:#f7f9f8 !important; color:#4e625d !important; }.admin-app-shell .sidebar-shell { border-right:0 !important; color:#d8e4df !important; background:#172b2a !important; box-shadow:2px 0 10px rgba(23,43,42,.06) !important; }.admin-app-shell .sidebar-brand { border-bottom-color:rgba(218,233,226,.16) !important; }.admin-app-shell .sidebar-brand img { border-radius:8px !important; background:#fff !important; }.admin-app-shell .sidebar-brand strong { color:#fff !important; }.admin-app-shell .sidebar-brand span,.admin-app-shell .sidebar-label,.admin-app-shell .sidebar-group-toggle { color:#a9beb7 !important; }.admin-app-shell .sidebar-context { border-left-color:#92b8a7 !important; }.admin-app-shell .sidebar-context strong { color:#e0ebe6 !important; }.admin-app-shell .sidebar-link { color:#c3d2cc !important; border-left-color:transparent !important; }.admin-app-shell .sidebar-icon { color:#9fb5ad !important; }.admin-app-shell .sidebar-link:hover { color:#fff !important; background:rgba(230,240,235,.1) !important; }.admin-app-shell .sidebar-link.is-active { color:#172b2a !important; border-left-color:#8ab39f !important; background:#e3efe8 !important; font-weight:780 !important; }.admin-app-shell .sidebar-link.is-active .sidebar-icon { color:#2f6b5f !important; }.admin-app-shell .sidebar-user { border-top-color:rgba(218,233,226,.16) !important; }.admin-app-shell .sidebar-user strong,.admin-app-shell .sidebar-user span { color:#d7e4df !important; }.admin-app-shell .user-monogram { color:#173e36 !important; background:#cce0d7 !important; }
+/* Navigation landmarks: compact desktop disclosure makes the current work area obvious without turning headings into heavyweight cards. */
+.admin-app-shell .grouped-sidebar-nav { display:block !important; padding:.16rem .22rem .4rem !important; }.admin-app-shell .sidebar-nav-group { margin:0 !important; padding:.35rem 0 .05rem !important; }.admin-app-shell .sidebar-nav-group + .sidebar-nav-group { margin-top:.18rem !important; padding-top:.5rem !important; border-top:1px solid rgba(217,233,226,.11); }.admin-app-shell .sidebar-group-toggle,.admin-app-shell:not(.is-collapsed) .sidebar-group-toggle { display:flex !important; width:100%; align-items:center; justify-content:space-between; min-height:23px !important; padding:.2rem .22rem !important; border:0 !important; border-radius:4px !important; color:#9db2aa !important; background:transparent !important; font-size:.5rem !important; font-weight:820 !important; letter-spacing:.085em !important; text-align:left; }.admin-app-shell .sidebar-group-toggle>span { display:flex !important; align-items:center; gap:.3rem; min-width:0; }.admin-app-shell .sidebar-group-marker { display:block; width:4px; height:4px; border:1px solid #829e92; border-radius:1px; background:transparent; }.admin-app-shell .sidebar-group-toggle b { display:block !important; flex:0 0 auto; color:#8ba99c !important; font-size:.68rem !important; line-height:1; transform:rotate(0deg); transition:transform 150ms cubic-bezier(.23,1,.32,1); }.admin-app-shell .sidebar-nav-group.is-closed .sidebar-group-toggle b { transform:rotate(-90deg); }.admin-app-shell .sidebar-nav-group.has-active-child .sidebar-group-toggle { color:#c9ddd4 !important; background:transparent !important; box-shadow:inset 2px 0 #83ac99; }.admin-app-shell .sidebar-nav-group.has-active-child .sidebar-group-marker { border-color:#b9d2c6; background:#91b8a6; }.admin-app-shell .sidebar-nav-group.has-active-child .sidebar-group-toggle b { color:#b9d2c6 !important; }.admin-app-shell .sidebar-group-items { display:grid; gap:2px; margin-top:.12rem; padding-left:.05rem; }.admin-app-shell .sidebar-nav-group.is-closed .sidebar-group-items { display:none !important; }.admin-app-shell .sidebar-link.is-active { border-left-color:#8fb9a5 !important; border-radius:4px !important; color:#f2f8f4 !important; background:transparent !important; box-shadow:none !important; font-weight:780 !important; }.admin-app-shell .sidebar-link.is-active .sidebar-icon { color:#8fb9a5 !important; }
+/* Compact signed-in identity: one quiet row with a small avatar, two-line identity, and a clear icon-only sign-out action. */
+.admin-app-shell .sidebar-user { display:block !important; margin-top:auto !important; padding:.52rem .24rem .05rem !important; border-top:1px solid rgba(217,233,226,.14) !important; }.admin-app-shell .sidebar-user-summary { display:flex; align-items:center; gap:.46rem; min-width:0; }.admin-app-shell .user-monogram { display:grid !important; flex:0 0 29px; width:29px !important; height:29px !important; place-items:center; border-radius:50% !important; font-size:.7rem !important; }.admin-app-shell .sidebar-user-copy { display:grid; min-width:0; gap:.03rem; }.admin-app-shell .sidebar-user-copy strong { overflow:hidden; color:#e9f2ee !important; font-size:.66rem !important; font-weight:760 !important; line-height:1.2; text-overflow:ellipsis; white-space:nowrap; }.admin-app-shell .sidebar-user-copy span { overflow:hidden; color:#a6bcb3 !important; font-size:.57rem !important; line-height:1.2; text-overflow:ellipsis; white-space:nowrap; }.admin-app-shell .logout-button { display:grid !important; flex:0 0 27px; width:27px; height:27px; margin-left:auto; place-items:center; border:1px solid rgba(205,226,216,.2) !important; border-radius:5px !important; color:#b8ccc3 !important; background:transparent !important; }.admin-app-shell .logout-button svg { width:13px; height:13px; }.admin-app-shell .logout-button:hover { border-color:#91b8a6 !important; color:#f3f9f5 !important; background:rgba(143,185,165,.13) !important; }
+.topbar-shell { border-bottom-color:#dde7e2 !important; background:rgba(255,255,255,.98) !important; box-shadow:0 1px 4px rgba(23,43,42,.035) !important; }.topbar-context span,.topbar-status { color:#71827c !important; }.topbar-context strong,.topbar-profile strong { color:#172b2a !important; }.sidebar-toggle,.mobile-nav-toggle,.header-icon-button { border-color:#d5e2dc !important; border-radius:8px !important; color:#5d756d !important; background:#fff !important; }.sidebar-toggle:hover,.mobile-nav-toggle:hover,.header-icon-button:hover { border-color:#9fc4b3 !important; color:#2f6b5f !important; background:#eaf3ee !important; }
+.routed-page-header,.clinical-index-page .routed-page-header,.profile-page .routed-page-header,.schedule-index-page .routed-page-header { border-bottom-color:#e0e9e4 !important; }.routed-page-header h1,.dashboard-reference-heading h1,.page-header h1 { color:#172b2a !important; }.routed-page-header .page-subtitle,.dashboard-reference-heading p,.page-header .page-subtitle { color:#71827c !important; }.breadcrumb-ledger a { color:#75867f !important; }.breadcrumb-ledger b { color:#4e625d !important; }.eyebrow { color:#66867b !important; }.eyebrow:before { background:#2f6b5f !important; }
+.index-controls,.clinical-form-shell,.routed-registry,.profile-hero,.profile-availability,.reserved-history,.schedule-detail-card,.reference-surface,.entry-panel,.registry-panel,.dashboard-reference-panel,.phase4-table-surface,.phase4-log-surface,.report-filter-surface,.invoice-line-items { border-color:#dce6e1 !important; border-radius:10px !important; background:#fff !important; box-shadow:0 2px 8px rgba(23,43,42,.045) !important; }.registry-head,.panel-heading,.phase4-surface-title,.form-intro,.clinical-form-footer { border-color:#e7eeea !important; background:#fbfdfc !important; }.registry-head strong,.panel-heading strong,.phase4-surface-title strong,.clinical-form-section>header strong { color:#263e37 !important; }.phase4-surface-title span,.clinical-form-section>header p,.form-intro p,.clinical-form-footer p { color:#74867f !important; }
+.clinical-form-section { border-color:#e7eeea !important; }.clinical-field>span,.form-group-ledger label,.permission-picker legend { color:#415851 !important; }.form-control,.form-select,textarea.form-control { border-color:#d3e0da !important; border-radius:7px !important; color:#263e37 !important; background:#fff !important; }.form-control:focus,.form-select:focus,textarea.form-control:focus { border-color:#6b9d8c !important; box-shadow:0 0 0 .16rem rgba(47,107,95,.14) !important; }.form-error-summary { border-left-color:#b34b4b !important; background:#fff6f5 !important; }
+.ledger-table thead th,.ledger-table th,.clinical-table thead th { border-color:#dce6e1 !important; color:#6d8078 !important; background:#f9fbfa !important; }.ledger-table td,.clinical-table td { border-color:#e9efec !important; color:#405850 !important; }.ledger-table tbody tr:hover,.clinical-table tbody tr:hover { background:#f5faf7 !important; }.row-actions a,.row-actions button,.table-actions a,.table-actions button { border-color:#d4e2db !important; color:#4c655c !important; background:#fff !important; }.row-actions a:hover,.row-actions button:hover,.table-actions a:hover,.table-actions button:hover { border-color:#9fc3b2 !important; color:#2f6b5f !important; background:#eaf4ee !important; }
+.btn-ledger-primary,.reference-primary { border-color:#2f6b5f !important; border-radius:8px !important; background:#2f6b5f !important; }.btn-ledger-primary:hover,.reference-primary:hover { border-color:#235449 !important; background:#235449 !important; }.btn-ledger-secondary,.reference-secondary { border-color:#cfddd6 !important; border-radius:8px !important; color:#466057 !important; background:#fff !important; }.btn-ledger-secondary:hover,.reference-secondary:hover { border-color:#a7c8b9 !important; color:#2f6b5f !important; background:#f2f8f4 !important; }.state-panel { border-color:#cbdcd4 !important; border-radius:10px !important; background:#fbfdfc !important; }.state-panel strong { color:#334b43 !important; }.state-panel p,.app-pagination { color:#75867f !important; }.pagination-controls button { border-color:#d3e1da !important; border-radius:7px !important; }
+.registry-detail-grid article,.facility-detail-cards article,.doctor-profile-card,.profile-block { border-color:#dce6e1 !important; border-radius:9px !important; background:#fff !important; }.registry-detail-grid article>span,.facility-detail-cards article>span,.profile-block b { color:#74867f !important; }.registry-detail-grid article>strong,.facility-detail-cards article>strong { color:#2c453d !important; }.operation-card { border-color:#dce6e1 !important; border-radius:10px !important; box-shadow:0 2px 7px rgba(23,43,42,.04) !important; }.operation-card:before { background:#2f6b5f !important; }.operation-card strong { color:#223d34 !important; }.operation-card small,.operation-card b { color:#74867f !important; }.dashboard-reference-panel h2 { color:#304940 !important; }
+/* Patient View: one profile work surface instead of a stack of large disconnected information cards. */
+.patient-profile-surface { overflow:hidden; margin-bottom:1rem; border:1px solid #dce6e1; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(23,43,42,.045); }.patient-profile-surface .patient-profile-hero { margin:0 !important; border:0 !important; border-bottom:1px solid #e5ece8 !important; border-top:3px solid #2f6b5f !important; border-radius:0 !important; padding:1rem 1.1rem !important; box-shadow:none !important; }.patient-profile-sections { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }.patient-profile-section { min-width:0; padding:1rem 1.1rem; border-right:1px solid #e6ede9; border-bottom:1px solid #e6ede9; }.patient-profile-section:nth-child(2n) { border-right:0; }.patient-profile-section:nth-last-child(-n+2) { border-bottom:0; }.patient-profile-section.is-wide { grid-column:1/-1; }.patient-profile-section h2 { margin:0 0 .75rem; color:#263e37; font-size:.73rem; font-weight:780; letter-spacing:.06em; text-transform:uppercase; }.patient-profile-section dl { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8rem 1.1rem; margin:0; }.patient-profile-section.is-wide dl { grid-template-columns:repeat(2,minmax(0,1fr)); }.patient-profile-section dl>div { min-width:0; }.patient-profile-section dt { margin:0 0 .25rem; color:#778981; font-size:.58rem; font-weight:780; letter-spacing:.07em; text-transform:uppercase; }.patient-profile-section dd { margin:0; overflow-wrap:anywhere; color:#344c44; font-size:.79rem; line-height:1.45; }.patient-profile-section.is-wide dd { white-space:pre-line; }
+/* Real access screen: retain existing form, registration, validation, and OAuth behavior while replacing the selected Night Shift color treatment. */
+.login-page.night-shift-login { grid-template-columns:minmax(360px,.82fr) minmax(500px,1.18fr) !important; background:#f7f9f8 !important; }.night-shift-login .login-visual { color:#e4eee9 !important; background:#172b2a !important; background-image:linear-gradient(90deg,rgba(222,239,232,.06) 1px,transparent 1px),linear-gradient(rgba(222,239,232,.045) 1px,transparent 1px) !important; background-size:48px 48px !important; }.night-shift-login .login-visual:before { background:#86ad9c !important; }.night-shift-login .login-visual-brand { border-bottom-color:rgba(225,238,232,.2) !important; }.night-shift-login .login-visual-brand:after { background:#8db4a3 !important; }.night-shift-login .brand-lockup-mark { border-color:rgba(214,234,225,.38) !important; border-radius:8px !important; background:#fff !important; }.night-shift-login .login-visual-brand span { color:#afc4bb !important; }.night-shift-login .login-visual-brand strong,.night-shift-login .login-visual-statement { color:#f6faf8 !important; }.night-shift-login .login-visual-kicker { color:#a5c1b5 !important; }.night-shift-login .access-system-ledger { border-color:rgba(205,228,217,.22) !important; border-left-color:#8db4a3 !important; border-radius:8px !important; background:rgba(7,23,20,.18) !important; }.night-shift-login .access-system-ledger header { color:#b3cabe !important; }.night-shift-login .access-system-ledger header i,.night-shift-login .access-system-ledger>div { border-color:rgba(217,236,228,.12) !important; }.night-shift-login .access-system-ledger>div { color:#c3d4cd !important; }.night-shift-login .access-system-ledger>div:before { background:#8db4a3 !important; }.night-shift-login .access-system-ledger>div b { color:#f0f7f3 !important; }
+.night-shift-login .login-form-area { background:#f7f9f8 !important; }.night-shift-login .login-form-wrap .eyebrow { color:#658277 !important; }.night-shift-login .login-form-wrap .eyebrow:before { background:#2f6b5f !important; }.night-shift-login .login-form-wrap h1 { color:#172b2a !important; }.night-shift-login .login-intro { color:#667972 !important; }.night-shift-login .login-access-surface { border-color:#d7e4dd !important; border-radius:10px !important; background:#fff !important; box-shadow:0 5px 16px rgba(23,43,42,.055) !important; }.night-shift-login .login-access-surface:before { background:#2f6b5f !important; }.night-shift-login .login-access-surface-label { color:#6d8379 !important; }.night-shift-login .login-access-surface-label i { background:#2f6b5f !important; }.night-shift-login .login-mode-switch { border-color:#dbe7e1 !important; border-radius:8px !important; background:#f5f8f6 !important; }.night-shift-login .login-mode-switch button { color:#60736b !important; }.night-shift-login .login-mode-switch button.active { color:#173b32 !important; background:#dcece3 !important; box-shadow:inset 0 -2px #5f947e !important; }.night-shift-login .form-group-ledger label { color:#41574e !important; }.night-shift-login .form-control { border-color:#cfddd6 !important; border-radius:7px !important; color:#2e443b !important; }.night-shift-login .form-control:focus { border-color:#679b87 !important; box-shadow:0 0 0 .16rem rgba(47,107,95,.14) !important; }.night-shift-login .password-visibility-toggle { border-radius:7px !important; color:#6b8177 !important; }.night-shift-login .password-visibility-toggle:hover { color:#2f6b5f !important; background:#edf5f0 !important; }.night-shift-login .login-submit { border-color:#2f6b5f !important; border-radius:7px !important; background:#2f6b5f !important; }.night-shift-login .login-submit:hover { border-color:#235449 !important; background:#235449 !important; }.night-shift-login .login-divider { color:#899990 !important; }.night-shift-login .login-divider:before,.night-shift-login .login-divider:after { background:#e1eae5 !important; }.night-shift-login .login-google { border-color:#d2e0d9 !important; border-radius:7px !important; color:#4c6359 !important; }.night-shift-login .login-google:hover { border-color:#a8c8b9 !important; color:#2f6b5f !important; background:#f4f9f6 !important; }.night-shift-login .login-ledger-meta { border-color:#dbe7e1 !important; border-left-color:#8bb29f !important; border-radius:8px !important; background:#fbfdfc !important; }.night-shift-login .login-ledger-meta:before { color:#6c8178 !important; }.night-shift-login .login-ledger-meta span { border-color:#e9efeb !important; }.night-shift-login .login-ledger-meta b { color:#74877e !important; }.night-shift-login .login-ledger-meta em { color:#2f6b5f !important; }.night-shift-login .login-footnote { color:#7a8b83 !important; }
+/* Desktop geometry: one 212px grid column owns the rail. The work area has no second margin offset, preventing an empty gutter beside navigation. */
+@media (min-width:901px) { .admin-app-shell,.admin-app-shell.is-collapsed { display:grid !important; grid-template-columns:212px minmax(0,1fr) !important; }.admin-app-shell.is-collapsed { grid-template-columns:68px minmax(0,1fr) !important; }.admin-app-shell .sidebar-shell { width:212px !important; padding:.72rem .52rem .62rem !important; }.admin-app-shell.is-collapsed .sidebar-shell { width:68px !important; }.admin-app-shell .admin-workspace,.admin-app-shell.is-collapsed .admin-workspace { grid-column:2; min-width:0; width:auto !important; margin-left:0 !important; }.admin-app-shell .sidebar-brand { min-height:44px; gap:.48rem; padding:.22rem .3rem .72rem !important; }.admin-app-shell .sidebar-brand img { width:29px !important; height:29px !important; }.admin-app-shell .sidebar-brand strong { font-size:.62rem !important; }.admin-app-shell .sidebar-context { margin:.55rem .28rem .26rem !important; padding:.34rem .45rem !important; }.admin-app-shell .sidebar-link { min-height:32px !important; gap:.54rem !important; padding:.36rem .42rem !important; font-size:.68rem !important; }.admin-app-shell .sidebar-icon { width:15px; }.admin-app-shell .sidebar-user { padding:.58rem .28rem .04rem !important; } }
+/* Persistent workspace header: the topbar is fixed independently of the scrolling document, and the workspace reserves its 56px height. */
+@media (min-width:901px) { .admin-app-shell .admin-workspace { padding-top:56px !important; }.admin-app-shell .topbar-shell { position:fixed !important; top:0 !important; right:0 !important; left:212px !important; z-index:70 !important; width:auto !important; margin:0 !important; }.admin-app-shell.is-collapsed .topbar-shell { left:68px !important; } }
+@media (max-width:900px) { .admin-app-shell .admin-workspace { padding-top:54px !important; }.admin-app-shell .topbar-shell { position:fixed !important; top:0 !important; right:0 !important; left:0 !important; z-index:70 !important; width:100% !important; margin:0 !important; } }
+@media (max-width:820px) { .login-page.night-shift-login { background:#f7f9f8 !important; }.night-shift-login .login-visual { min-height:238px !important; }.night-shift-login .login-form-area { background:#f7f9f8 !important; } }
+@media (max-width:900px) { .admin-app-shell .sidebar-nav-group { padding:.48rem 0 .1rem !important; }.admin-app-shell .sidebar-nav-group + .sidebar-nav-group { margin-top:.2rem !important; padding-top:.65rem !important; }.admin-app-shell .sidebar-group-toggle { min-height:28px !important; font-size:.57rem !important; }.admin-app-shell .sidebar-group-items { margin-top:.2rem; } }
+@media (max-width:680px) { .patient-profile-sections { grid-template-columns:1fr; }.patient-profile-section,.patient-profile-section:nth-child(2n),.patient-profile-section:nth-last-child(-n+2) { border-right:0; border-bottom:1px solid #e6ede9; }.patient-profile-section:last-child { border-bottom:0; }.patient-profile-section dl,.patient-profile-section.is-wide dl { grid-template-columns:1fr 1fr; gap:.78rem; }.patient-profile-surface .patient-profile-hero { padding:.9rem !important; }.patient-profile-section { padding:.9rem; } }
+@media (prefers-reduced-motion:no-preference) { .admin-app-shell .sidebar-link,.topbar-shell button,.login-access-surface,.operation-card { transition:background-color 160ms cubic-bezier(.23,1,.32,1),border-color 160ms cubic-bezier(.23,1,.32,1),color 160ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1); } }
+
+/* Active navigation stays text-led: retain icons for inactive links, remove the active-link icon without shifting the label awkwardly. */
+.admin-app-shell .sidebar-link.is-active .sidebar-icon { display:none !important; }
+.admin-app-shell .sidebar-link.is-active { gap:0 !important; padding-left:.56rem !important; }
+
+/* Create Clinic Branch: focused facility setup surface */
+.branch-create-form { overflow: hidden; }
+.branch-create-form .form-error-summary { margin: 1rem 1.1rem 0 !important; }
+.branch-form-intro { display:flex; align-items:flex-start; justify-content:space-between; gap:1.5rem; padding:1.15rem 1.2rem 1rem; border-bottom:1px solid #e7eeea; background:linear-gradient(135deg,#fbfdfc 0%,#f4faf6 100%); }
+.branch-form-kicker { display:block; margin-bottom:.35rem; color:#2f6b5f; font-size:.62rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+.branch-form-intro h2 { margin:0; color:#172b2a; font-size:1.08rem; font-weight:760; letter-spacing:-.025em; }
+.branch-form-intro p { max-width:40rem; margin:.35rem 0 0; color:#718078; font-size:.76rem; line-height:1.5; }
+.branch-form-step { flex:0 0 auto; padding:.38rem .55rem; border:1px solid #cfe0d7; border-radius:7px; color:#2f6b5f; background:#fff; font-size:.68rem; font-weight:800; letter-spacing:.08em; }
+.branch-form-step small { color:#91a199; font-size:.56rem; font-weight:700; }
+.branch-form-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 1.1rem; padding:1.15rem 1.2rem 1.2rem; }
+.branch-form-fields .clinical-field { min-width:0; }
+.branch-form-fields .clinical-field.is-wide { grid-column:1/-1; }
+.branch-create-form .clinical-form-footer { padding:.85rem 1.2rem !important; }
+.branch-create-form .clinical-form-footer p { max-width:27rem; }
+.branch-create-form .clinical-form-footer > div { display:flex; flex:0 0 auto; gap:.55rem; }
+.branch-create-form .clinical-form-footer button { min-width:7.2rem; }
+@media (max-width:680px) {
+  .branch-form-intro { padding:.95rem .85rem .85rem; }
+  .branch-form-intro h2 { font-size:.98rem; }
+  .branch-form-intro p { font-size:.7rem; }
+  .branch-form-fields { grid-template-columns:1fr; gap:.78rem; padding:.9rem .85rem 1rem; }
+  .branch-form-fields .clinical-field.is-wide { grid-column:auto; }
+  .branch-create-form .clinical-form-footer { padding:.8rem .85rem !important; }
+  .branch-create-form .clinical-form-footer > div { width:100%; }
+  .branch-create-form .clinical-form-footer button { flex:1; min-width:0; }
+}
+
+/* Header account control without the initial/avatar marker */
+.admin-workspace .topbar-profile-trigger { gap:.46rem !important; padding-inline:.42rem !important; }
+.admin-workspace .topbar-profile-trigger > div { min-width:0; display:grid; gap:.08rem; }
+.admin-workspace .topbar-profile-trigger > div strong { max-width:clamp(110px,16vw,210px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.admin-workspace .topbar-profile-trigger > svg { flex:0 0 auto; width:15px; height:15px; }
+@media (max-width:640px) {
+  .admin-workspace .topbar-profile-trigger > div strong { max-width:120px; }
+}
+
+/* Reliable header account dropdown: keep the menu inside the fixed topbar stacking context. */
+.admin-workspace .topbar-shell,
+.admin-workspace .topbar-actions,
+.admin-workspace .topbar-profile { overflow:visible !important; }
+.admin-workspace .topbar-profile { position:relative !important; z-index:120 !important; }
+.admin-workspace .topbar-profile-trigger { position:relative !important; z-index:121 !important; cursor:pointer !important; }
+.admin-workspace .header-profile-menu { position:absolute !important; top:calc(100% + .45rem) !important; right:0 !important; z-index:300 !important; display:block !important; visibility:visible !important; opacity:1 !important; pointer-events:auto !important; min-width:190px !important; }
+.admin-workspace .header-profile-menu button { cursor:pointer !important; }
+@media (max-width:640px) {
+  .admin-workspace .header-profile-menu { right:0 !important; min-width:174px !important; }
+}
+/* Final mobile navigation affordance: keep the drawer trigger visible above all legacy theme layers. */
+@media (max-width:900px) {
+  .admin-workspace .topbar-shell .mobile-nav-toggle {
+    display:grid !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    position:relative !important;
+    z-index:130 !important;
+    flex:0 0 38px !important;
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    min-height:38px !important;
+    place-items:center !important;
+    border:1px solid #b7d9cb !important;
+    border-radius:8px !important;
+    color:#205c4b !important;
+    background:#eef7f1 !important;
+  }
+  .admin-workspace .topbar-shell .mobile-nav-toggle svg { width:18px !important; height:18px !important; }
+}
+/* Keep the menu affordance available in scaled device previews; desktop collapse remains available beside it. */
+@media (min-width:901px) {
+  .admin-workspace .topbar-shell .mobile-nav-toggle {
+    display:grid !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    flex:0 0 32px !important;
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+    min-height:32px !important;
+  }
+}
+/* Device-preview fallback: use the rendered workspace width, not only the outer browser viewport. */
+.admin-app-shell .admin-workspace { container-type:inline-size; container-name:clinic-workspace; }
+@container clinic-workspace (max-width:900px) {
+  .admin-app-shell .admin-workspace {
+    display:flex !important;
+    flex-direction:column !important;
+    padding-top:0 !important;
+  }
+  .admin-app-shell .topbar-shell {
+    display:flex !important;
+    position:sticky !important;
+    inset:0 0 auto 0 !important;
+    z-index:999 !important;
+    flex:0 0 54px !important;
+    width:100% !important;
+    min-height:54px !important;
+    margin:0 !important;
+    padding-inline:.8rem !important;
+    background:#ffffff !important;
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+  .admin-app-shell .topbar-context {
+    display:flex !important;
+    min-width:0 !important;
+    align-items:center !important;
+  }
+  .admin-app-shell .topbar-context strong {
+    display:block !important;
+    overflow:hidden !important;
+    max-width:clamp(120px,42vw,240px) !important;
+    text-overflow:ellipsis !important;
+    white-space:nowrap !important;
+  }
+  .admin-workspace .topbar-shell .mobile-nav-toggle {
+    display:grid !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    flex:0 0 38px !important;
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    min-height:38px !important;
+  }
+  .admin-workspace .topbar-shell .sidebar-toggle { display:none !important; }
+}
+
+/* User Create password visibility controls. */
+.password-field-control { position:relative; display:block; }
+.password-field-control .form-control { padding-right:2.65rem; }
+.password-field-control .password-visibility-toggle { position:absolute; top:50%; right:.38rem; display:grid; width:2rem; height:2rem; transform:translateY(-50%); place-items:center; border:0; border-radius:6px; color:#6b8177; background:transparent; cursor:pointer; }
+.password-field-control .password-visibility-toggle:hover { color:#2f6b5f; background:#edf5f0; }
+.password-field-control .password-visibility-toggle:focus-visible { outline:2px solid #679b87; outline-offset:2px; }
+.password-field-control .password-visibility-toggle svg { width:16px; height:16px; }
+
+/* Profile-style User View surface. */
+.user-profile-card { overflow:hidden; border:1px solid #dce6e1; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(23,43,42,.045); }
+.user-profile-hero { display:flex; align-items:center; gap:1rem; padding:1.2rem 1.3rem; border-bottom:1px solid #e7eeea; background:linear-gradient(115deg,#f2f8f4 0%,#fff 70%); }
+.user-profile-avatar { display:grid; flex:0 0 68px; width:68px; height:68px; place-items:center; border:1px solid #b7d1c2; border-radius:50%; color:#235447; background:#dcece3; font-size:1.15rem; font-weight:800; letter-spacing:.06em; }
+.user-profile-identity { min-width:0; flex:1; }
+.user-profile-kicker { display:block; margin-bottom:.25rem; color:#6a887b; font-size:.58rem; font-weight:800; letter-spacing:.12em; }
+.user-profile-identity h2 { margin:0; overflow:hidden; color:#172b2a; font-size:1.35rem; font-weight:800; text-overflow:ellipsis; white-space:nowrap; }
+.user-profile-identity p { margin:.25rem 0 0; overflow:hidden; color:#71827c; font-size:.77rem; text-overflow:ellipsis; white-space:nowrap; }
+.user-profile-status { display:grid; justify-items:end; gap:.42rem; flex:0 0 auto; text-align:right; }
+.user-profile-status > span { color:#536960; font-size:.72rem; font-weight:700; }
+.user-profile-body { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.15rem; padding:1.1rem 1.3rem 1.3rem; }
+.user-profile-section { min-width:0; }
+.user-profile-section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:.8rem; padding-bottom:.65rem; border-bottom:1px solid #e7eeea; }
+.user-profile-section-heading span { color:#7b9086; font-size:.57rem; font-weight:800; letter-spacing:.1em; }
+.user-profile-section-heading strong { color:#304940; font-size:.78rem; font-weight:760; }
+.user-profile-detail-list { display:grid; }
+.user-profile-detail-list > div { display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:43px; border-bottom:1px solid #eef3f0; }
+.user-profile-detail-list > div:last-child { border-bottom:0; }
+.user-profile-detail-list > div > span { color:#7a8b83; font-size:.7rem; }
+.user-profile-detail-list > div > strong { overflow:hidden; color:#294238; font-size:.75rem; font-weight:750; text-align:right; text-overflow:ellipsis; white-space:nowrap; }
+@media (max-width:680px) {
+  .user-profile-hero { align-items:flex-start; flex-wrap:wrap; padding:.95rem; }
+  .user-profile-avatar { flex-basis:52px; width:52px; height:52px; font-size:.95rem; }
+  .user-profile-identity { max-width:calc(100% - 68px); }
+  .user-profile-identity h2 { font-size:1.08rem; }
+  .user-profile-status { width:100%; display:flex; align-items:center; justify-content:space-between; padding-top:.75rem; border-top:1px solid #e1ebe5; text-align:left; }
+  .user-profile-body { grid-template-columns:1fr; gap:.95rem; padding:.95rem; }
+}
+
+/* Social-profile presentation for User View. */
+.social-user-profile { overflow:hidden; }
+.user-profile-cover { position:relative; display:flex; align-items:flex-end; min-height:128px; padding:1rem 1.25rem; background:linear-gradient(120deg,#173d36 0%,#2f6b5f 52%,#8fb9a5 100%); }
+.user-profile-cover:before,.user-profile-cover:after { position:absolute; border:1px solid rgba(255,255,255,.2); border-radius:50%; content:""; }
+.user-profile-cover:before { top:-80px; right:12%; width:220px; height:220px; }
+.user-profile-cover:after { right:4%; bottom:-125px; width:250px; height:250px; }
+.user-profile-cover span { position:relative; z-index:1; color:rgba(245,252,248,.78); font-size:.58rem; font-weight:800; letter-spacing:.14em; }
+.social-profile-header { position:relative; display:flex; align-items:flex-end; gap:1rem; min-height:100px; padding:0 1.3rem 1.05rem; border-bottom:1px solid #e7eeea; background:#fff; }
+.social-profile-avatar { align-self:flex-start; margin-top:-44px; border:5px solid #fff; box-shadow:0 2px 8px rgba(23,43,42,.13); }
+.social-profile-identity { padding-top:.72rem; }
+.social-profile-status { margin-left:auto; padding-top:.8rem; }
+.user-profile-tabs { display:flex; gap:1.35rem; min-height:49px; align-items:center; padding:0 1.3rem; border-bottom:1px solid #e7eeea; background:#fff; }
+.user-profile-tabs a { position:relative; display:flex; align-items:center; align-self:stretch; color:#71827c; font-size:.72rem; font-weight:760; text-decoration:none; }
+.user-profile-tabs a:hover { color:#2f6b5f; }
+.user-profile-tabs a.is-active { color:#2f6b5f; }
+.user-profile-tabs a.is-active:after { position:absolute; right:0; bottom:-1px; left:0; height:2px; background:#2f6b5f; content:""; }
+.social-profile-body { grid-template-columns:repeat(2,minmax(0,1fr)); padding:1.15rem 1.3rem 1.3rem; background:#fbfdfc; }
+.user-profile-section-wide { grid-column:1 / -1; }
+.user-profile-access-list { grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:2rem; }
+@media (max-width:680px) {
+  .user-profile-cover { min-height:106px; padding:.8rem .95rem; }
+  .social-profile-header { align-items:flex-start; flex-wrap:wrap; gap:.75rem; padding:0 .95rem .9rem; }
+  .social-profile-avatar { flex-basis:58px; width:58px; height:58px; margin-top:-30px; }
+  .social-profile-identity { max-width:calc(100% - 72px); padding-top:.55rem; }
+  .social-profile-status { width:100%; margin-left:0; padding-top:.72rem; }
+  .user-profile-tabs { gap:1.1rem; padding:0 .95rem; overflow-x:auto; }
+  .social-profile-body { grid-template-columns:1fr; padding:.95rem; }
+  .user-profile-section-wide { grid-column:auto; }
+  .user-profile-access-list { grid-template-columns:1fr; }
+}
+
+/* Minimal User View refinement: keep the profile identity, remove social decoration. */
+.minimal-user-profile { overflow:hidden; }
+.minimal-profile-header { display:flex; align-items:center; gap:1rem; padding:1rem 1.15rem; border-bottom:1px solid #e7eeea; background:#fff; }
+.minimal-profile-avatar { flex:0 0 54px; width:54px; height:54px; border:1px solid #b9d0c1; color:#235447; background:#e8f2ec; font-size:.95rem; }
+.minimal-profile-identity { flex:1; min-width:0; padding:0; }
+.minimal-profile-identity h2 { font-size:1.15rem; }
+.minimal-profile-status { flex:0 0 auto; margin-left:auto; padding:0; }
+.minimal-profile-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 1.4rem; padding:1rem 1.15rem 1.15rem; background:#fff; }
+.minimal-profile-group { min-width:0; }
+.minimal-profile-label { display:block; padding-bottom:.55rem; color:#7b9086; font-size:.57rem; font-weight:800; letter-spacing:.1em; }
+.minimal-profile-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:39px; border-top:1px solid #eef3f0; }
+.minimal-profile-row > span { color:#7a8b83; font-size:.7rem; }
+.minimal-profile-row > strong { overflow:hidden; color:#294238; font-size:.74rem; font-weight:750; text-align:right; text-overflow:ellipsis; white-space:nowrap; }
+@media (max-width:680px) {
+  .minimal-profile-header { align-items:flex-start; gap:.75rem; padding:.9rem; }
+  .minimal-profile-avatar { flex-basis:48px; width:48px; height:48px; }
+  .minimal-profile-identity h2 { font-size:1rem; }
+  .minimal-profile-status { align-items:flex-end; }
+  .minimal-profile-grid { grid-template-columns:1fr; gap:.9rem; padding:.9rem; }
+}
+
+/* Final narrow-screen safeguards for the minimal User View. */
+@media (max-width:680px) {
+  .minimal-profile-header { display:flex; flex-wrap:wrap; width:100%; min-width:0; }
+  .minimal-profile-identity { min-width:0; max-width:calc(100% - 68px); }
+  .minimal-profile-status { display:flex; align-items:center; justify-content:space-between; width:100%; min-width:0; margin-left:0; padding-top:.7rem; border-top:1px solid #e7eeea; }
+  .minimal-profile-status > span { overflow:hidden; max-width:58%; text-overflow:ellipsis; white-space:nowrap; }
+  .minimal-profile-row { align-items:flex-start; flex-direction:column; gap:.18rem; padding:.58rem 0; }
+  .minimal-profile-row > strong { width:100%; overflow-wrap:anywhere; text-align:left; white-space:normal; }
+}

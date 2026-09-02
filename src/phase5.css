@@ -1,0 +1,20 @@
+/* Reference clinical workspace: Phase 5 introduces a restrained emergency signal—coral for priority and disposition—while preserving calm, readable operations surfaces. */
+.phase5-page { max-width: 1440px; }
+.btn-emergency-primary { border: 1px solid #c8514b; background: #c8514b; color: #fff; border-radius: 3px; padding: .66rem 1rem; font-weight: 750; font-size: .84rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: transform 160ms cubic-bezier(.23,1,.32,1), background-color 160ms cubic-bezier(.23,1,.32,1); }
+.btn-emergency-primary:hover { background: #ad3e39; color: #fff; }
+.btn-emergency-primary:active { transform: scale(.97); }
+.emergency-intro { border-left: 4px solid #c8514b; }
+.emergency-form .clinical-form-section:first-of-type { border-top-color: #f1c9c6; }
+.phase5-filter-bar { display: grid; grid-template-columns: minmax(210px, 1fr) minmax(130px, .28fr) minmax(150px, .35fr) auto; gap: .75rem; align-items: center; padding: 1rem; }
+.priority-pill { display: inline-flex; align-items: center; border-radius: 999px; padding: .25rem .55rem; color: #667e83; background: #eef2f3; font-size: .71rem; font-weight: 800; text-transform: capitalize; white-space: nowrap; }
+.priority-pill.priority-critical { color: #9f2925; background: #fbe4e2; }
+.priority-pill.priority-high { color: #b75a22; background: #fff0e5; }
+.priority-pill.priority-medium { color: #71632b; background: #fff7d8; }
+.priority-pill.priority-low { color: #167169; background: #e2f4ef; }
+.emergency-hero { display: grid; grid-template-columns: 1fr 1.2fr auto; gap: 1rem; align-items: center; padding: 1.5rem; border-left: 4px solid #c8514b; }
+.emergency-hero > div > span { display: block; color: #9c6965; font-size: .67rem; letter-spacing: .1em; font-weight: 800; }
+.emergency-hero h2 { color: #4d2927; margin: .25rem 0 .15rem; font-size: 1.38rem; }
+.emergency-hero p { margin: 0; color: #816965; font-size: .85rem; }
+.emergency-hero strong { display: block; color: #5b3633; margin: .35rem 0; font-size: .96rem; text-transform: capitalize; }
+.emergency-ipd-link { display: inline-flex; margin-top: .75rem; text-decoration: none; }
+@media (max-width: 760px) { .phase5-filter-bar, .emergency-hero { grid-template-columns: 1fr; } .phase5-filter-bar .btn-ledger-secondary { width: 100%; } }

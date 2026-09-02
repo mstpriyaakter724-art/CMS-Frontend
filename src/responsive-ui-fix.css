@@ -1,0 +1,200 @@
+/* Supplied responsive task: compact sticky header, animated grouped navigation, and overflow-safe app surfaces. */
+.admin-workspace { min-width: 0; overflow-x: clip; padding-top: 0; }
+.topbar-shell {
+  position: sticky !important;
+  z-index: 45 !important;
+  top: 0;
+  min-height: 56px;
+  height: 56px;
+  margin-top: 0 !important;
+  background: rgba(255, 255, 255, .98) !important;
+  box-shadow: 0 2px 12px rgba(21, 43, 46, .06);
+}
+.routed-page-content { min-width: 0; padding-top: 0 !important; }
+.routed-page { min-width: 0; }
+
+/* This exact selector supersedes the older in-flow sticky rule that was adding a full viewport before the workspace. */
+@media (min-width: 901px) {
+  .admin-app-shell:not(.is-mobile-open) .sidebar-shell {
+    position: fixed !important;
+    inset: 0 auto 0 0 !important;
+    height: 100dvh !important;
+  }
+}
+
+/* The navigation follows the accessible expanded state, with a short slide rather than display:none. */
+.admin-app-shell .sidebar-group-items {
+  display: grid !important;
+  grid-template-rows: 1fr;
+  max-height: 24rem;
+  opacity: 1;
+  overflow: hidden;
+  pointer-events: auto;
+  transition: max-height 190ms cubic-bezier(.23, 1, .32, 1), opacity 150ms ease-out;
+}
+.admin-app-shell .sidebar-nav-group.is-closed .sidebar-group-items {
+  display: grid !important;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.admin-app-shell .sidebar-group-toggle {
+  border-radius: 4px;
+  transition: color 160ms ease-out, background 160ms ease-out;
+}
+.admin-app-shell .sidebar-group-toggle.is-active-parent,
+.admin-app-shell .sidebar-nav-group.has-active-child .sidebar-group-toggle {
+  color: #e5fbf9 !important;
+  background: rgba(7, 158, 151, .18) !important;
+}
+.admin-app-shell .sidebar-group-toggle b { transition: transform 190ms cubic-bezier(.23, 1, .32, 1); }
+.admin-app-shell .sidebar-nav-group.is-closed .sidebar-group-toggle b { transform: rotate(-90deg); }
+
+/* Existing dense layouts keep their own tables but cannot exceed the viewport. */
+.reference-surface,
+.routed-registry,
+.clinical-form-shell,
+.document-paper,
+.phase4-table-surface,
+.phase4-log-surface,
+.report-filter-surface,
+.table-responsive,
+.invoice-line-items { max-width: 100%; }
+.table-responsive,
+.invoice-line-items,
+.phase4-table-surface,
+.phase4-log-surface { overflow-x: auto; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; }
+
+@media (max-width: 900px) {
+  .admin-app-shell:not(.is-mobile-open) .sidebar-shell,
+  .admin-app-shell.is-mobile-open .sidebar-shell {
+    position: fixed !important;
+    inset: 0 auto 0 0 !important;
+    height: 100dvh !important;
+    z-index: 60 !important;
+  }
+  .admin-app-shell:not(.is-mobile-open) .sidebar-shell { transform: translateX(-105%) !important; }
+  .admin-app-shell.is-mobile-open .sidebar-shell { transform: translateX(0) !important; }
+  .admin-app-shell,
+  .admin-app-shell.is-collapsed {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .admin-app-shell .admin-workspace,
+  .admin-app-shell.is-collapsed .admin-workspace {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    transform: none !important;
+  }
+  .admin-app-shell .topbar-shell {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    left: 0 !important;
+  }
+  .topbar-shell .mobile-nav-toggle {
+    display: grid !important;
+    flex: 0 0 38px;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px;
+    min-height: 38px;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #075f5c !important;
+    background: #eef9f8 !important;
+    border: 1px solid #b7e0dc !important;
+  }
+  .topbar-shell .sidebar-toggle { display: none !important; }
+  /* Mobile drawer must never inherit compact-rail label hiding. */
+  .admin-app-shell .sidebar-shell .sidebar-link-label {
+    display: inline !important;
+    color: inherit !important;
+  }
+  .admin-app-shell .sidebar-shell .sidebar-brand > div,
+  .admin-app-shell .sidebar-shell .sidebar-context,
+  .admin-app-shell .sidebar-shell .sidebar-group-toggle,
+  .admin-app-shell .sidebar-shell .sidebar-user > div:not(.user-monogram),
+  .admin-app-shell .sidebar-shell .logout-button {
+    display: block !important;
+  }
+  .admin-app-shell .sidebar-shell .sidebar-link {
+    justify-content: flex-start !important;
+    padding: .55rem .72rem !important;
+  }
+  .admin-app-shell .sidebar-shell .sidebar-group-items .sidebar-link {
+    padding-left: 1.15rem !important;
+  }
+  .admin-app-shell .sidebar-link.is-active,
+  .admin-app-shell .sidebar-link.is-active:hover,
+  .admin-app-shell .sidebar-group-toggle.is-active-parent,
+  .admin-app-shell .sidebar-nav-group.has-active-child .sidebar-group-toggle {
+    box-shadow: none !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+  }
+  .admin-app-shell .sidebar-link.is-active .sidebar-icon { color: #ffffff !important; }
+  .topbar-shell { min-height: 54px; height: 54px; padding-inline: .8rem !important; }
+  .topbar-context { gap: .45rem; min-width: 0; }
+  .topbar-actions { gap: .5rem; }
+  .routed-page,
+  .reference-dashboard { padding: .7rem .9rem 1.6rem !important; }
+  .routed-page-header { gap: .7rem; margin-bottom: .8rem; }
+  .dashboard-reference-heading { margin-bottom: .65rem !important; }
+  .index-controls,
+  .report-filter-grid,
+  .branch-toolbar,
+  .branch-form-grid,
+  .clinical-fields-grid,
+  .phase4-filter-bar { min-width: 0; }
+  .admin-app-shell .sidebar-link { min-height: 36px; padding-block: .48rem !important; }
+  .admin-app-shell .sidebar-group-toggle { min-height: 30px; padding-block: .42rem !important; }
+}
+
+@media (max-width: 620px) {
+  .topbar-shell { min-height: 50px; height: 50px; padding-inline: .65rem !important; }
+  .topbar-context > span,
+  .topbar-status,
+  .topbar-profile > div { display: none; }
+  .routed-page,
+  .reference-dashboard { padding: .62rem .72rem 1.35rem !important; }
+  .routed-page-header h1 { font-size: 1.15rem !important; }
+  .index-controls,
+  .report-filter-grid,
+  .branch-toolbar,
+  .branch-form-grid,
+  .clinical-fields-grid,
+  .phase4-filter-bar,
+  .medical-summary-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .routed-page-header,
+  .dashboard-reference-heading,
+  .document-section-heading,
+  .form-intro,
+  .clinical-form-footer { align-items: stretch; }
+  .routed-page-header > *,
+  .dashboard-reference-heading > *,
+  .document-section-heading > * { min-width: 0; }
+  .page-header-action,
+  .dashboard-reference-heading > div:last-child,
+  .clinical-form-footer > div { width: 100%; }
+  .page-header-action button,
+  .dashboard-reference-heading > div:last-child button,
+  .clinical-form-footer > div button { flex: 1; min-height: 40px; }
+  .modal-dialog,
+  .modal-content { max-width: calc(100vw - 1rem); margin-inline: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-app-shell .sidebar-group-items,
+  .admin-app-shell .sidebar-group-toggle b { transition: none; }
+}

@@ -1,0 +1,36 @@
+/* Reference clinical workspace: light sheets, teal restraint, and action hierarchy for accountable inpatient operations. */
+.phase4-page { max-width: 1440px; }
+.phase4-table-surface, .phase4-log-surface { margin-top: 1.25rem; overflow: hidden; }
+.phase4-surface-title { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.35rem; border-bottom: 1px solid #e5eeee; color: #47636a; font-size: .72rem; letter-spacing: .1em; }
+.phase4-surface-title strong { color: #1c3f44; font-size: .78rem; letter-spacing: 0; }
+.phase4-table-surface .clinical-table { margin-bottom: 0; }
+.clinical-table th { color: #557177; font-size: .7rem; letter-spacing: .08em; font-weight: 700; white-space: nowrap; }
+.clinical-table td { color: #29484d; vertical-align: middle; }
+.clinical-table td strong, .clinical-table td small { display: block; }
+.clinical-table td small { margin-top: .2rem; color: #7b9498; font-size: .75rem; }
+.row-actions { white-space: nowrap; }
+.row-actions a, .row-actions button { border: 0; background: transparent; color: #15756f; font-size: .8rem; font-weight: 700; text-decoration: none; padding: .2rem .35rem; }
+.row-actions button:disabled { color: #a8bbbb; cursor: not-allowed; }
+.phase4-filter-bar { display: grid; grid-template-columns: minmax(200px, 1fr) minmax(150px, .35fr) auto auto; gap: .75rem; align-items: center; padding: 1rem; }
+.phase4-filter-bar .form-control, .phase4-filter-bar .form-select { min-height: 2.55rem; }
+.phase4-availability { color: #19746f; font-size: .82rem; font-weight: 800; white-space: nowrap; }
+.phase4-inline-error { margin: .85rem 0; padding: .75rem 1rem; background: #fff4f3; border-left: 3px solid #d9675e; color: #a03e38; font-size: .86rem; }
+.phase4-empty { padding: 2.25rem 1.5rem; text-align: center; color: #789196; font-size: .9rem; }
+.status-pill { display: inline-flex; align-items: center; padding: .26rem .55rem; border-radius: 999px; background: #edf4f4; color: #426168; font-size: .73rem; font-weight: 750; text-transform: capitalize; white-space: nowrap; }
+.status-pill.status-active, .status-pill.status-available, .status-pill.status-admitted, .status-pill.status-under_treatment { background: #e2f4ef; color: #137066; }
+.status-pill.status-occupied, .status-pill.status-maintenance, .status-pill.status-cancelled { background: #fff2e8; color: #a35728; }
+.status-pill.status-discharged, .status-pill.status-inactive, .status-pill.status-reserved { background: #eef2f4; color: #657d83; }
+.phase4-admission-hero { display: grid; grid-template-columns: 1fr 1.2fr auto; gap: 1rem; align-items: center; padding: 1.5rem; border-left: 4px solid #1b8a83; }
+.phase4-admission-hero span:not(.status-pill), .phase4-detail-grid article > span { display: block; color: #669096; font-size: .67rem; letter-spacing: .1em; font-weight: 800; }
+.phase4-admission-hero h2 { margin: .25rem 0 .15rem; color: #16434b; font-size: 1.38rem; }
+.phase4-admission-hero p { margin: 0; color: #6e898e; font-size: .85rem; }
+.phase4-admission-hero strong { display: block; margin: .35rem 0; color: #204a50; font-size: .96rem; }
+.phase4-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.phase4-detail-grid article { padding: 1.2rem 1.35rem; }
+.phase4-detail-grid p { color: #47656b; line-height: 1.6; font-size: .88rem; }
+.phase4-log-item { padding: 1rem 1.35rem; border-bottom: 1px solid #e8efef; }
+.phase4-log-item:last-child { border-bottom: 0; }
+.phase4-log-item strong { display: block; color: #294f55; font-size: .87rem; }
+.phase4-log-item p { margin: .35rem 0; color: #617d82; font-size: .88rem; }
+.phase4-log-item small { color: #779196; }
+@media (max-width: 760px) { .phase4-filter-bar, .phase4-admission-hero, .phase4-detail-grid { grid-template-columns: 1fr; } .phase4-filter-bar .btn-ledger-secondary { width: 100%; } .phase4-surface-title { align-items: flex-start; gap: .5rem; flex-direction: column; } }
