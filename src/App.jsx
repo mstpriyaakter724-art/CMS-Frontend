@@ -19,6 +19,8 @@ import './sage-hospital-theme.css';
 import AdminLayout from './components/AdminLayout.jsx';
 import DashboardRoute from './pages/DashboardRoute.jsx';
 import LoginPage from './pages/LoginPage.jsx';
+import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx';
+import ResetPasswordPage from './pages/ResetPasswordPage.jsx';
 import LoginDesignDemos from './pages/LoginDesignDemos.jsx';
 import ModernLoginPrototype from './pages/ModernLoginPrototype.jsx';
 import CardLoginDemos from './pages/CardLoginDemos.jsx';
@@ -44,11 +46,11 @@ import { BedCreate, BedEdit, BedsIndex, BedShow } from './pages/phase4/BedRoutes
 import { IpdAdmissionCreate, IpdAdmissionShow, IpdAdmissionsIndex, IpdDischargePage, IpdTransferPage, IpdTreatmentCreate } from './pages/phase4/IpdAdmissionRoutes.jsx';
 import { WardCreate, WardEdit, WardsIndex, WardShow } from './pages/phase4/WardRoutes.jsx';
 import { EmergencyConsultationPage, EmergencyDispositionPage, EmergencyTriagePage, EmergencyVisitCreate, EmergencyVisitEdit, EmergencyVisitShow, EmergencyVisitsIndex } from './pages/phase5/EmergencyRoutes.jsx';
-import { InvoiceCreate, InvoiceEdit, InvoicePayment, InvoicesIndex, InvoiceShow, PatientBillingHistory, SourceBillingPage } from './pages/phase6/InvoiceRoutes.jsx';
+import { InvoiceCreate, InvoiceEdit, InvoicePayment, InvoicePaymentResult, InvoicesIndex, InvoiceShow, PatientBillingHistory, SourceBillingPage } from './pages/phase6/InvoiceRoutes.jsx';
 import InvoicePrintPage from './pages/phase6/InvoicePrintPage.jsx';
 import PrescriptionPrintPage from './pages/phase3/PrescriptionPrintPage.jsx';
 import { ReportPage, ReportsDashboard } from './pages/phase7/ReportRoutes.jsx';
-import { DiagnosticOrderCreate, DiagnosticOrderShow, DiagnosticOrdersIndex, DiagnosticReportPage, DiagnosticReportShow, DiagnosticResultsPage, DiagnosticTestsIndex } from './pages/diagnostics/DiagnosticRoutes.jsx';
+import { DiagnosticDashboard, DiagnosticOrderCreate, DiagnosticOrderShow, DiagnosticOrdersIndex, DiagnosticReportPage, DiagnosticReportShow, DiagnosticResultsPage, DiagnosticSampleWorklist, DiagnosticTestsIndex } from './pages/diagnostics/DiagnosticRoutes.jsx';
 import DiagnosticReportPrintPage from './pages/diagnostics/DiagnosticReportPrintPage.jsx';
 import './diagnostic-center.css';
 import './facility-detail-cards.css';
@@ -103,7 +105,7 @@ export default function App() {
   };
 
   if (checkingSession) return <main className="boot-screen"><span>Restoring secure session…</span></main>;
-  if (!session?.token) return <BrowserRouter><Routes><Route path="login-design-demos" element={<LoginDesignDemos />} /><Route path="modern-login-demo" element={<ModernLoginPrototype />} /><Route path="card-login-demos" element={<CardLoginDemos />} /><Route path="blue-theme-demos" element={<BlueThemeDemos />} /><Route path="*" element={<LoginPage onAuthenticated={handleAuthenticated} />} /></Routes></BrowserRouter>;
+  if (!session?.token) return <BrowserRouter><Routes><Route path="login-design-demos" element={<LoginDesignDemos />} /><Route path="modern-login-demo" element={<ModernLoginPrototype />} /><Route path="card-login-demos" element={<CardLoginDemos />} /><Route path="blue-theme-demos" element={<BlueThemeDemos />} /><Route path="forgot-password" element={<ForgotPasswordPage />} /><Route path="reset-password" element={<ResetPasswordPage />} /><Route path="*" element={<LoginPage onAuthenticated={handleAuthenticated} />} /></Routes></BrowserRouter>;
 
   return (
     <BrowserRouter>
@@ -129,11 +131,13 @@ export default function App() {
           <Route path="diagnostic-tests/new" element={<RegistryForm entity="diagnostic-tests" mode="create" />} />
           <Route path="diagnostic-tests/:id" element={<RegistryShow entity="diagnostic-tests" />} />
           <Route path="diagnostic-tests/:id/edit" element={<RegistryForm entity="diagnostic-tests" mode="edit" />} />
+          <Route path="diagnostic-dashboard" element={<DiagnosticDashboard />} />
           <Route path="diagnostic-orders" element={<DiagnosticOrdersIndex />} />
           <Route path="diagnostic-orders/new" element={<DiagnosticOrderCreate />} />
           <Route path="diagnostic-orders/:diagnosticOrderId" element={<DiagnosticOrderShow />} />
           <Route path="diagnostic-orders/:diagnosticOrderId/results" element={<DiagnosticResultsPage />} />
           <Route path="diagnostic-orders/:diagnosticOrderId/report" element={<DiagnosticReportPage />} />
+          <Route path="diagnostic-samples" element={<DiagnosticSampleWorklist />} />
           <Route path="diagnostic-reports/:diagnosticReportId" element={<DiagnosticReportShow />} />
           <Route path="departments" element={<RegistryIndex entity="departments" />} />
           <Route path="departments/new" element={<RegistryForm entity="departments" mode="create" />} />
@@ -168,6 +172,9 @@ export default function App() {
           <Route path="invoices/new" element={<InvoiceCreate />} />
           <Route path="invoices/:invoiceId" element={<InvoiceShow />} />
           <Route path="invoices/:invoiceId/payment" element={<InvoicePayment />} />
+          <Route path="invoices/payment/success" element={<InvoicePaymentResult outcome="success" />} />
+          <Route path="invoices/payment/fail" element={<InvoicePaymentResult outcome="fail" />} />
+          <Route path="invoices/payment/cancel" element={<InvoicePaymentResult outcome="cancel" />} />
           <Route path="invoices/:invoiceId/edit" element={<InvoiceEdit />} />
           <Route path="reports" element={<ReportsDashboard />} />
           <Route path="reports/:reportType" element={<ReportPage />} />

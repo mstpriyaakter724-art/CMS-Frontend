@@ -44,10 +44,32 @@ apiClient.interceptors.response.use(
     const status = error?.response?.status;
     const rawMessage = error?.response?.data?.message || error?.message;
     const technical = /sqlstate|exception|stack trace|axioserror|internal server error/i.test(rawMessage || '');
+
+    // Centralized error-normalization layer: every consumer (forms, pages) reads
+    // error.errors for field-level messages and error.message for a human summary.
+    // response.data.errors is Laravel's per-field validation payload (422) or a
+    // free-form `errors` payload from ApiResponse::error() (e.g. sample workflow
+    // ValidationException re-throws) — always expose it, regardless of status,
+    // so callers such as `setErrors(error?.errors || ...)` keep working unchanged.
+    const backendErrors = error?.response?.data?.errors || null;
+    error.errors = backendErrors;
+
+    // Prefer the doctor/patient-facing message the backend actually computed
+    // (e.g. "The selected doctor is not available at this time.") over a generic
+    // string — only fall back to a generic message when the backend gave us
+    // nothing usable or something clearly technical.
+    const firstFieldMessage = backendErrors && typeof backendErrors === 'object'
+      ? Object.values(backendErrors).flat().find((message) => typeof message === 'string' && message.trim())
+      : null;
+    const usefulBackendMessage = !technical && typeof rawMessage === 'string' && rawMessage.trim() && rawMessage !== 'The submitted data is invalid.'
+      ? rawMessage
+      : null;
+
     if (status === 401) { unauthorizedHandler?.(); error.message = 'Your secure session has expired. Please sign in again.'; notify.warning('Session expired', error.message); }
-    else if (status === 422) error.message = 'Please correct the highlighted fields.';
-    else if (status === 403) error.message = 'You do not have permission to perform this action.';
-    else if (status === 404) error.message = 'The requested record could not be found.';
+    else if (status === 422) error.message = firstFieldMessage || usefulBackendMessage || 'Please correct the highlighted fields.';
+    else if (status === 403) error.message = usefulBackendMessage || 'You do not have permission to perform this action.';
+    else if (status === 404) error.message = usefulBackendMessage || 'The requested record could not be found.';
+    else if (status === 409) error.message = usefulBackendMessage || firstFieldMessage || 'This action conflicts with the current state of this record. Please refresh and try again.';
     else if (!error?.response) { error.message = 'Unable to connect to the server. Please check your connection and try again.'; notify.error(error, error.message); }
     else if (status >= 500 || technical) { error.message = 'Something went wrong while processing your request. Please try again.'; notify.error(error, error.message); }
     else error.message = cleanMessage(error, 'Unable to complete this action. Please try again.');
