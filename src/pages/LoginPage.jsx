@@ -8,7 +8,7 @@ import '../LoginPage.css';
 // (patients included) are provisioned by authorized staff/admins only. See
 // P0-7 in the Phase 1 audit report. Forgot-password is a separate P1 task.
 export default function LoginPage({ onAuthenticated }) {
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [credentials, setCredentials] = useState({ email: 'admin@clinic.local', password: 'ChangeMe123!' });
 
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -74,6 +74,7 @@ export default function LoginPage({ onAuthenticated }) {
         device_name: 'clinical-ledger-web'
       });
 
+      console.log(response.data.data);
       onAuthenticated(response.data.data);
     } catch (requestError) {
       setError(

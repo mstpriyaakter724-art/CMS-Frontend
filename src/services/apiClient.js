@@ -5,7 +5,7 @@ import { cleanMessage, notify } from './notify.js';
 
 const configuredApiBase = String(import.meta.env.VITE_API_BASE_URL || '').trim();
 const localBrowserHost = typeof window !== 'undefined' && /^(localhost|127(?:\\.\\d{1,3}){3}|::1)$/i.test(window.location.hostname);
-const apiBaseUrl = localBrowserHost && configuredApiBase ? configuredApiBase : '/api';
+const apiBaseUrl = configuredApiBase || '/api';
 
 const apiClient = axios.create({
   // Windows local .env: VITE_API_BASE_URL=http://127.0.0.1:8000/api.

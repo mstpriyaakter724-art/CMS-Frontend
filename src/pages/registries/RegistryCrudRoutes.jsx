@@ -48,48 +48,260 @@ export function RegistryShow({ entity }) {
   const title = isUser ? record.name : readable(record, config.details[1] || config.details[0]);
   const initials = String(record.name || 'User').split(' ').filter(Boolean).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
 
-  return (
-    <section className={`routed-page registry-routed-page ${facility ? 'facility-detail-page' : ''}`}>
-      <PageHeader
-        eyebrow={config.eyebrow}
-        title={isUser ? 'User profile' : title}
-        description={isUser ? 'Review this staff profile, assigned role, and authorized clinic scope.' : `Detailed ${config.one} record within the current authorized scope.`}
-        crumbs={[{ label: config.title, to: config.base }, { label: title }]}
-        action={<div className="profile-actions"><Link className="btn-ledger-secondary" to={config.base}>Back to list</Link><Link className="btn-ledger-primary" to={`${config.base}/${record.id}/edit`}>Edit {config.one}</Link></div>}
-      />
-      {isUser ? (
-        <section className="user-profile-card minimal-user-profile">
-          <header className="minimal-profile-header">
-            <div className="user-profile-avatar minimal-profile-avatar" aria-hidden="true">{initials || 'U'}</div>
-            <div className="user-profile-identity minimal-profile-identity">
-              <span className="user-profile-kicker">USER PROFILE</span>
-              <h2>{record.name}</h2>
-              <p>{record.email || 'No email recorded'}</p>
+
+
+return (
+  <section className="container-fluid py-4 px-4">
+
+    <PageHeader
+      eyebrow={config.eyebrow}
+      title={isUser ? 'User profile' : title}
+      description={
+        isUser
+          ? 'Review this staff profile, assigned role, and authorized clinic scope.'
+          : `Detailed ${config.one} record within the current authorized scope.`
+      }
+      crumbs={[
+        { label: config.title, to: config.base },
+        { label: title },
+      ]}
+      action={
+        <div className="d-flex gap-2">
+          <Link
+            className="btn btn-light border fw-semibold px-3"
+            to={config.base}
+          >
+            <i className="bi bi-arrow-left me-1"></i>
+            Back
+          </Link>
+
+          <Link
+            className="btn btn-success fw-semibold px-3"
+            to={`${config.base}/${record.id}/edit`}
+          >
+            <i className="bi bi-pencil-square me-1"></i>
+            Edit
+          </Link>
+        </div>
+      }
+    />
+
+    {/* =====================================================
+        SINGLE DETAIL SURFACE
+       ===================================================== */}
+
+    <section className="card border-0 shadow-sm rounded-4 overflow-hidden mt-4">
+
+      {/* ---------------------------------------------------
+          TOP PROFILE / RECORD HEADER
+         --------------------------------------------------- */}
+
+      <div className="px-4 px-lg-5 py-4 border-bottom">
+
+        {isUser ? (
+          <div className="d-flex align-items-center gap-3">
+
+            {/* Avatar */}
+            <div
+              className="rounded-3 bg-success bg-opacity-10 text-success
+                         d-flex align-items-center justify-content-center
+                         fw-bold fs-5 flex-shrink-0"
+              style={{
+                width: '58px',
+                height: '58px',
+              }}
+            >
+              {initials || 'U'}
             </div>
-            <div className="user-profile-status minimal-profile-status"><Status value={record.status} /><span>{record.role?.name || 'Role not assigned'}</span></div>
-          </header>
-          <div className="minimal-profile-grid">
-            <section className="minimal-profile-group">
-              <span className="minimal-profile-label">CONTACT</span>
-              <div className="minimal-profile-row"><span>Email</span><strong>{record.email || '—'}</strong></div>
-              <div className="minimal-profile-row"><span>Phone</span><strong>{record.phone || 'Not provided'}</strong></div>
-            </section>
-            <section className="minimal-profile-group">
-              <span className="minimal-profile-label">ACCESS</span>
-              <div className="minimal-profile-row"><span>Role</span><strong>{record.role?.name || 'Not assigned'}</strong></div>
-              <div className="minimal-profile-row"><span>Clinic</span><strong>{record.clinic?.name || 'All authorized clinics'}</strong></div>
-            </section>
+
+            {/* User */}
+            <div className="flex-grow-1 min-width-0">
+
+              <div className="small text-uppercase text-muted fw-semibold mb-1">
+                User Profile
+              </div>
+
+              <h2 className="h5 fw-bold mb-1 text-dark">
+                {record.name}
+              </h2>
+
+              <div className="small text-muted">
+                {record.email || 'No email recorded'}
+              </div>
+
+            </div>
+
+            {/* Status */}
+            <div className="text-end">
+
+              <Status value={record.status} />
+
+              <div className="small text-muted mt-1">
+                {record.role?.name || 'Role not assigned'}
+              </div>
+
+            </div>
+
           </div>
-        </section>
+        ) : (
+          <div className="d-flex align-items-center justify-content-between gap-3">
+
+            <div>
+              <div className="small text-uppercase text-muted fw-semibold mb-1">
+                {config.eyebrow}
+              </div>
+
+              <h2 className="h5 fw-bold text-dark mb-0">
+                {title}
+              </h2>
+            </div>
+
+            {record.status && (
+              <Status value={record.status} />
+            )}
+
+          </div>
+        )}
+
+      </div>
+
+
+      {/* =================================================
+          USER DETAILS
+         ================================================= */}
+
+      {isUser ? (
+
+        <div className="px-4 px-lg-5 py-4">
+
+          <div className="row g-0">
+
+            {/* CONTACT */}
+            <div className="col-12 col-lg-6 pe-lg-5">
+
+              <div className="small text-uppercase text-muted fw-bold mb-3">
+                Contact
+              </div>
+
+              <div className="d-flex justify-content-between py-3 border-bottom">
+                <span className="text-muted small">
+                  Email
+                </span>
+
+                <strong className="small text-dark text-end">
+                  {record.email || '—'}
+                </strong>
+              </div>
+
+              <div className="d-flex justify-content-between py-3">
+                <span className="text-muted small">
+                  Phone
+                </span>
+
+                <strong className="small text-dark text-end">
+                  {record.phone || 'Not provided'}
+                </strong>
+              </div>
+
+            </div>
+
+
+            {/* ACCESS */}
+            <div className="col-12 col-lg-6 ps-lg-5 mt-4 mt-lg-0 border-lg-start">
+
+              <div className="small text-uppercase text-muted fw-bold mb-3">
+                Access
+              </div>
+
+              <div className="d-flex justify-content-between py-3 border-bottom">
+                <span className="text-muted small">
+                  Role
+                </span>
+
+                <strong className="small text-dark text-end">
+                  {record.role?.name || 'Not assigned'}
+                </strong>
+              </div>
+
+              <div className="d-flex justify-content-between py-3">
+                <span className="text-muted small">
+                  Clinic
+                </span>
+
+                <strong className="small text-dark text-end">
+                  {record.clinic?.name || 'All authorized clinics'}
+                </strong>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
       ) : (
-        <section className={`reference-surface ${facility ? 'facility-detail-cards' : 'registry-detail-grid'}`}>
-          {config.details.map((key) => <article className={facility && ['address', 'description'].includes(key) ? 'is-wide' : ''} key={key}><span>{label(key)}</span><strong>{key === 'status' ? <Status value={record[key]} /> : readable(record, key)}</strong></article>)}
-        </section>
+
+        /* =================================================
+           NORMAL RECORD DETAILS
+           ================================================= */
+
+        <div className="px-4 px-lg-5 py-4">
+
+          <div className="row g-0">
+
+            {config.details.map((key, index) => {
+
+              const isWide =
+                facility &&
+                ['address', 'description'].includes(key);
+
+              return (
+                <div
+                  key={key}
+                  className={`
+                    ${isWide ? 'col-12' : 'col-12 col-md-6'}
+                    ${index > 0 ? 'border-top' : ''}
+                  `}
+                >
+
+                  <div className="py-3 px-0 pe-md-4">
+
+                    <div className="small text-uppercase text-muted fw-semibold mb-1">
+                      {label(key)}
+                    </div>
+
+                    <div className="text-dark fw-semibold">
+
+                      {key === 'status' ? (
+                        <Status value={record[key]} />
+                      ) : (
+                        readable(record, key)
+                      )}
+
+                    </div>
+
+                  </div>
+
+                </div>
+              );
+            })}
+
+          </div>
+
+        </div>
+
       )}
+
     </section>
-  );
+
+  </section>
+);
+
+
+
+
 }
 
-export function RegistryForm({ entity, mode }) { const config = configFor(entity); const { user } = useOutletContext(); const { id } = useParams(); const navigate = useNavigate(); const editing = mode === 'edit'; const initial = () => ({ ...config.blank, ...(user?.clinic_id && config.blank.clinic_id !== undefined ? { clinic_id: String(user.clinic_id) } : {}) }); const [form, setForm] = useState(initial); const [support, setSupport] = useState({}); const [loading, setLoading] = useState(true); const [saving, setSaving] = useState(false); const [errors, setErrors] = useState({}); const [loadError, setLoadError] = useState(''); useEffect(() => { const supportRequests = (config.support || []).map((key) => apiClient.get(`/${key}?per_page=100`)); const recordRequest = editing ? apiClient.get(`${config.endpoint}/${id}`) : Promise.resolve(null); Promise.all([recordRequest, ...supportRequests]).then(([recordResponse, ...responses]) => { const nextSupport = Object.fromEntries((config.support || []).map((key, index) => [key, toItems(responses[index]) ])); setSupport(nextSupport); if (recordResponse) { const record = recordResponse.data.data; setForm({ ...initial(), ...record, ...Object.fromEntries(Object.keys(relationKey).map((key) => [key, record[key] ? String(record[key]) : ''])), password: '', password_confirmation: '' }); } }).catch((reason) => setLoadError(reason?.response?.data?.message || `Unable to load ${config.one} form.`)).finally(() => setLoading(false)); }, [entity, id, editing]); const update = (key, value) => { setForm((current) => ({ ...current, [key]: value })); setErrors((current) => clearFieldError(current, key)); }; const available = (key) => (support[relationKey[key]] || []).filter((item) => !['department_id', 'ward_id'].includes(key) || !form.clinic_id || String(item.clinic_id) === String(form.clinic_id)); const submit = async (event) => { event.preventDefault(); setSaving(true); setErrors({}); try { const data = { ...form }; Object.keys(relationKey).forEach((key) => { if (key in data) data[key] = data[key] ? Number(data[key]) : null; }); if (entity === 'users' && editing && !data.password) { delete data.password; delete data.password_confirmation; } ['turnaround_hours'].forEach((key) => { if (key in data) data[key] = data[key] ? Number(data[key]) : null; }); ['default_price', 'default_unit_price'].forEach((key) => { if (key in data) data[key] = Number(data[key] || 0); }); const response = editing ? await apiClient.put(`${config.endpoint}/${id}`, data) : await apiClient.post(config.endpoint, data); notify.success(`${label(config.one)} ${editing ? 'updated' : 'created'}.`); navigate(`${config.base}/${response.data.data.id}`); } catch (reason) { if (reason?.response?.status === 422) setErrors(reason.response.data.errors || { form: [reason.response.data.message || 'Please correct the marked fields.'] }); else notify.error(reason, `Unable to save this ${config.one} right now.`); } finally { setSaving(false); } }; if (loading) return <section className="routed-page"><LoadingPanel label={`Loading ${config.one} form…`} /></section>; if (loadError) return <section className="routed-page"><ErrorPanel message={loadError} retry={() => window.location.reload()} /></section>; return <section className="routed-page registry-routed-page"><PageHeader eyebrow={config.eyebrow} title={`${editing ? 'Edit' : 'Create'} ${config.one}`} description={`${editing ? 'Review and update' : 'Create'} this ${config.one} in a dedicated form without leaving the current workflow.`} crumbs={[{ label: config.title, to: config.base }, { label: editing ? 'Edit' : 'Create' }]} /><form className={`clinical-form-shell registry-crud-form ${config.base === '/clinic-branches' ? 'branch-create-form' : ''}`} onSubmit={submit} noValidate><FormErrorSummary errors={errors} />{config.base === '/clinic-branches' && <div className="branch-form-intro"><div><span className="branch-form-kicker">Facility setup</span><h2>Register a new clinic branch</h2><p>Capture the branch identity and contact details used across hospital operations.</p></div><span className="branch-form-step">01 <small>of 01</small></span></div>}<div className="branch-form-fields">{config.fields.map((key) => <RegistryField key={key} entity={entity} field={key} value={form[key]} options={relationKey[key] ? available(key) : []} error={errors[key]} editing={editing} onChange={(value) => update(key, value)} />)}</div><div className="clinical-form-footer"><p>Required checks and authorization remain enforced by the Laravel API.</p><div><button className="btn-ledger-secondary" type="button" onClick={() => navigate(editing ? `${config.base}/${id}` : config.base)}>Cancel</button><button className="btn-ledger-primary" disabled={saving}>{saving ? 'Saving…' : editing ? `Update ${config.one}` : `Create ${config.one}`}</button></div></div></form></section>; }
+export function RegistryForm({ entity, mode }) { const config = configFor(entity); const { user } = useOutletContext(); const { id } = useParams(); const navigate = useNavigate(); const editing = mode === 'edit'; const initial = () => ({ ...config.blank, ...(user?.clinic_id && config.blank.clinic_id !== undefined ? { clinic_id: String(user.clinic_id) } : {}) }); const [form, setForm] = useState(initial); const [support, setSupport] = useState({}); const [loading, setLoading] = useState(true); const [saving, setSaving] = useState(false); const [errors, setErrors] = useState({}); const [loadError, setLoadError] = useState(''); useEffect(() => { const supportRequests = (config.support || []).map((key) => apiClient.get(`/${key}?per_page=100`)); const recordRequest = editing ? apiClient.get(`${config.endpoint}/${id}`) : Promise.resolve(null); Promise.all([recordRequest, ...supportRequests]).then(([recordResponse, ...responses]) => { const nextSupport = Object.fromEntries((config.support || []).map((key, index) => [key, toItems(responses[index])])); setSupport(nextSupport); if (recordResponse) { const record = recordResponse.data.data; setForm({ ...initial(), ...record, ...Object.fromEntries(Object.keys(relationKey).map((key) => [key, record[key] ? String(record[key]) : ''])), password: '', password_confirmation: '' }); } }).catch((reason) => setLoadError(reason?.response?.data?.message || `Unable to load ${config.one} form.`)).finally(() => setLoading(false)); }, [entity, id, editing]); const update = (key, value) => { setForm((current) => ({ ...current, [key]: value })); setErrors((current) => clearFieldError(current, key)); }; const available = (key) => (support[relationKey[key]] || []).filter((item) => !['department_id', 'ward_id'].includes(key) || !form.clinic_id || String(item.clinic_id) === String(form.clinic_id)); const submit = async (event) => { event.preventDefault(); setSaving(true); setErrors({}); try { const data = { ...form }; Object.keys(relationKey).forEach((key) => { if (key in data) data[key] = data[key] ? Number(data[key]) : null; }); if (entity === 'users' && editing && !data.password) { delete data.password; delete data.password_confirmation; } ['turnaround_hours'].forEach((key) => { if (key in data) data[key] = data[key] ? Number(data[key]) : null; });['default_price', 'default_unit_price'].forEach((key) => { if (key in data) data[key] = Number(data[key] || 0); }); const response = editing ? await apiClient.put(`${config.endpoint}/${id}`, data) : await apiClient.post(config.endpoint, data); notify.success(`${label(config.one)} ${editing ? 'updated' : 'created'}.`); navigate(`${config.base}/${response.data.data.id}`); } catch (reason) { if (reason?.response?.status === 422) setErrors(reason.response.data.errors || { form: [reason.response.data.message || 'Please correct the marked fields.'] }); else notify.error(reason, `Unable to save this ${config.one} right now.`); } finally { setSaving(false); } }; if (loading) return <section className="routed-page"><LoadingPanel label={`Loading ${config.one} form…`} /></section>; if (loadError) return <section className="routed-page"><ErrorPanel message={loadError} retry={() => window.location.reload()} /></section>; return <section className="routed-page registry-routed-page"><PageHeader eyebrow={config.eyebrow} title={`${editing ? 'Edit' : 'Create'} ${config.one}`} description={`${editing ? 'Review and update' : 'Create'} this ${config.one} in a dedicated form without leaving the current workflow.`} crumbs={[{ label: config.title, to: config.base }, { label: editing ? 'Edit' : 'Create' }]} /><form className={`clinical-form-shell registry-crud-form ${config.base === '/clinic-branches' ? 'branch-create-form' : ''}`} onSubmit={submit} noValidate><FormErrorSummary errors={errors} />{config.base === '/clinic-branches' && <div className="branch-form-intro"><div><span className="branch-form-kicker">Facility setup</span><h2>Register a new clinic branch</h2><p>Capture the branch identity and contact details used across hospital operations.</p></div><span className="branch-form-step">01 <small>of 01</small></span></div>}<div className="branch-form-fields">{config.fields.map((key) => <RegistryField key={key} entity={entity} field={key} value={form[key]} options={relationKey[key] ? available(key) : []} error={errors[key]} editing={editing} onChange={(value) => update(key, value)} />)}</div><div className="clinical-form-footer"><p>Required checks and authorization remain enforced by the Laravel API.</p><div><button className="btn-ledger-secondary" type="button" onClick={() => navigate(editing ? `${config.base}/${id}` : config.base)}>Cancel</button><button className="btn-ledger-primary" disabled={saving}>{saving ? 'Saving…' : editing ? `Update ${config.one}` : `Create ${config.one}`}</button></div></div></form></section>; }
 
-function RegistryField({ entity, field, value, options, error, editing, onChange }) { const wide = ['address', 'description'].includes(field); const isPassword = field === 'password' || field === 'password_confirmation'; const [visible, setVisible] = useState(false); const optional = ['department_id', 'ward_id', 'phone', 'description', 'strength', 'dosage_form', 'category', 'specimen', 'result_unit', 'reference_range', 'turnaround_hours', 'contact_person'].includes(field) || (editing && isPassword); const type = isPassword ? (visible ? 'text' : 'password') : field === 'email' ? 'email' : ['default_price', 'default_unit_price', 'turnaround_hours'].includes(field) ? 'number' : 'text'; if (relationKey[field]) return <label className={`clinical-field ${error?.length ? 'has-error' : ''}`}><span>{label(field)}{!optional && <b>*</b>}</span><select className={`form-select ${error?.length ? 'is-invalid' : ''}`} value={value || ''} required={!optional} onChange={(event) => onChange(event.target.value)}><option value="">Select {label(field)}</option>{options.map((item) => <option key={item.id} value={item.id}>{item.branch_name || item.name || `${item.room_number}`}</option>)}</select><FieldError messages={error} /></label>; if (field === 'status') { const states = entity === 'rooms' ? [['active', 'Active'], ['inactive', 'Inactive'], ['maintenance', 'Maintenance']] : [['active', 'Active'], ['inactive', 'Inactive']]; return <label className={`clinical-field ${error?.length ? 'has-error' : ''}`}><span>Status</span><select className={`form-select ${error?.length ? 'is-invalid' : ''}`} value={value || 'active'} onChange={(event) => onChange(event.target.value)}>{states.map(([state, stateLabel]) => <option value={state} key={state}>{stateLabel}</option>)}</select><FieldError messages={error} /></label>; } if (field === 'room_type') return <label className={`clinical-field ${error?.length ? 'has-error' : ''}`}><span>Room type</span><select className="form-select" value={value || 'general'} onChange={(event) => onChange(event.target.value)}>{['general', 'consultation', 'procedure', 'laboratory', 'pharmacy', 'administrative', 'future_ipd'].map((item) => <option key={item} value={item}>{label(item)}</option>)}</select><FieldError messages={error} /></label>; return <label className={`clinical-field ${wide ? 'is-wide' : ''} ${error?.length ? 'has-error' : ''}`}><span>{label(field)}{!optional && <b>*</b>}{editing && isPassword && ' (leave blank to retain)'}</span>{wide ? <textarea className={`form-control ${error?.length ? 'is-invalid' : ''}`} rows="3" value={value || ''} onChange={(event) => onChange(event.target.value)} /> : isPassword ? <div className="password-field-control"><input className={`form-control ${error?.length ? 'is-invalid' : ''}`} type={type} autoComplete="new-password" value={value || ''} onChange={(event) => onChange(event.target.value)} required={!optional} /><button className="password-visibility-toggle" type="button" aria-label={visible ? `Hide ${label(field).toLowerCase()}` : `Show ${label(field).toLowerCase()}`} aria-pressed={visible} onClick={() => setVisible((current) => !current)}>{visible ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}</button></div> : <input id={field} className={`form-control ${error?.length ? 'is-invalid' : ''}`} type={type} min={type === 'number' ? '0' : undefined} step={field.includes('price') ? '0.01' : undefined} required={!optional} value={value || ''} onChange={(event) => onChange(event.target.value)} /> }<FieldError messages={error} /></label>; }
+function RegistryField({ entity, field, value, options, error, editing, onChange }) { const wide = ['address', 'description'].includes(field); const isPassword = field === 'password' || field === 'password_confirmation'; const [visible, setVisible] = useState(false); const optional = ['department_id', 'ward_id', 'phone', 'description', 'strength', 'dosage_form', 'category', 'specimen', 'result_unit', 'reference_range', 'turnaround_hours', 'contact_person'].includes(field) || (editing && isPassword); const type = isPassword ? (visible ? 'text' : 'password') : field === 'email' ? 'email' : ['default_price', 'default_unit_price', 'turnaround_hours'].includes(field) ? 'number' : 'text'; if (relationKey[field]) return <label className={`clinical-field ${error?.length ? 'has-error' : ''}`}><span>{label(field)}{!optional && <b>*</b>}</span><select className={`form-select ${error?.length ? 'is-invalid' : ''}`} value={value || ''} required={!optional} onChange={(event) => onChange(event.target.value)}><option value="">Select {label(field)}</option>{options.map((item) => <option key={item.id} value={item.id}>{item.branch_name || item.name || `${item.room_number}`}</option>)}</select><FieldError messages={error} /></label>; if (field === 'status') { const states = entity === 'rooms' ? [['active', 'Active'], ['inactive', 'Inactive'], ['maintenance', 'Maintenance']] : [['active', 'Active'], ['inactive', 'Inactive']]; return <label className={`clinical-field ${error?.length ? 'has-error' : ''}`}><span>Status</span><select className={`form-select ${error?.length ? 'is-invalid' : ''}`} value={value || 'active'} onChange={(event) => onChange(event.target.value)}>{states.map(([state, stateLabel]) => <option value={state} key={state}>{stateLabel}</option>)}</select><FieldError messages={error} /></label>; } if (field === 'room_type') return <label className={`clinical-field ${error?.length ? 'has-error' : ''}`}><span>Room type</span><select className="form-select" value={value || 'general'} onChange={(event) => onChange(event.target.value)}>{['general', 'consultation', 'procedure', 'laboratory', 'pharmacy', 'administrative', 'future_ipd'].map((item) => <option key={item} value={item}>{label(item)}</option>)}</select><FieldError messages={error} /></label>; return <label className={`clinical-field ${wide ? 'is-wide' : ''} ${error?.length ? 'has-error' : ''}`}><span>{label(field)}{!optional && <b>*</b>}{editing && isPassword && ' (leave blank to retain)'}</span>{wide ? <textarea className={`form-control ${error?.length ? 'is-invalid' : ''}`} rows="3" value={value || ''} onChange={(event) => onChange(event.target.value)} /> : isPassword ? <div className="password-field-control"><input className={`form-control ${error?.length ? 'is-invalid' : ''}`} type={type} autoComplete="new-password" value={value || ''} onChange={(event) => onChange(event.target.value)} required={!optional} /><button className="password-visibility-toggle" type="button" aria-label={visible ? `Hide ${label(field).toLowerCase()}` : `Show ${label(field).toLowerCase()}`} aria-pressed={visible} onClick={() => setVisible((current) => !current)}>{visible ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}</button></div> : <input id={field} className={`form-control ${error?.length ? 'is-invalid' : ''}`} type={type} min={type === 'number' ? '0' : undefined} step={field.includes('price') ? '0.01' : undefined} required={!optional} value={value || ''} onChange={(event) => onChange(event.target.value)} />}<FieldError messages={error} /></label>; }

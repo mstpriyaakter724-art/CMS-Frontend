@@ -7,27 +7,27 @@ import Pagination from '../components/Pagination.jsx';
 
 const settings = {
   clinics: {
-    title: 'Clinic registry', singular: 'clinic', endpoint: '/clinics', eyebrow: 'PHASE 1 · ORGANIZATION',
+    title: 'Clinic registry', singular: 'clinic', endpoint: '/clinics', eyebrow: 'ORGANIZATION',
     fields: ['name', 'address', 'phone', 'email', 'status'], columns: ['name', 'phone', 'email', 'status'],
     initial: { name: '', address: '', phone: '', email: '', status: 'active' },
   },
   departments: {
-    title: 'Department registry', singular: 'department', endpoint: '/departments', eyebrow: 'PHASE 1 · ORGANIZATION',
+    title: 'Department registry', singular: 'department', endpoint: '/departments', eyebrow: 'ORGANIZATION',
     fields: ['clinic_id', 'name', 'description', 'status'], columns: ['name', 'clinic', 'status'],
     initial: { clinic_id: '', name: '', description: '', status: 'active' },
   },
   rooms: {
-    title: 'Room registry', singular: 'room', endpoint: '/rooms', eyebrow: 'PHASE 1 · FACILITIES',
+    title: 'Room registry', singular: 'room', endpoint: '/rooms', eyebrow: 'FACILITIES',
     fields: ['clinic_id', 'department_id', 'ward_id', 'room_number', 'name', 'room_type', 'status', 'description'], columns: ['room_number', 'name', 'clinic', 'department', 'ward', 'room_type', 'status'],
     initial: { clinic_id: '', department_id: '', ward_id: '', room_number: '', name: '', room_type: 'general', status: 'active', description: '' },
   },
   users: {
-    title: 'User directory', singular: 'user', endpoint: '/users', eyebrow: 'PHASE 1 · ACCESS CONTROL',
+    title: 'User directory', singular: 'user', endpoint: '/users', eyebrow: 'ACCESS CONTROL',
     fields: ['clinic_id', 'role_id', 'name', 'email', 'phone', 'status', 'password', 'password_confirmation'], columns: ['name', 'email', 'clinic', 'role', 'status'],
     initial: { clinic_id: '', role_id: '', name: '', email: '', phone: '', status: 'active', password: '', password_confirmation: '' },
   },
   roles: {
-    title: 'Role matrix', singular: 'role', endpoint: '/roles', eyebrow: 'PHASE 1 · ACCESS CONTROL',
+    title: 'Role matrix', singular: 'role', endpoint: '/roles', eyebrow: 'ACCESS CONTROL',
     fields: ['name', 'description', 'permission_ids'], columns: ['name', 'description', 'permissions'],
     initial: { name: '', description: '', permission_ids: [] },
   },

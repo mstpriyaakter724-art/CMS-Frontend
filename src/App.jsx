@@ -108,7 +108,7 @@ export default function App() {
   if (!session?.token) return <BrowserRouter><Routes><Route path="login-design-demos" element={<LoginDesignDemos />} /><Route path="modern-login-demo" element={<ModernLoginPrototype />} /><Route path="card-login-demos" element={<CardLoginDemos />} /><Route path="blue-theme-demos" element={<BlueThemeDemos />} /><Route path="forgot-password" element={<ForgotPasswordPage />} /><Route path="reset-password" element={<ResetPasswordPage />} /><Route path="*" element={<LoginPage onAuthenticated={handleAuthenticated} />} /></Routes></BrowserRouter>;
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename= {import.meta.env.BASE_URL}>
       <Routes>
         <Route path="invoices/:invoiceId/print" element={<InvoicePrintPage />} />
         <Route path="opd-visits/:visitId/prescription/print" element={<PrescriptionPrintPage />} />
